@@ -5,14 +5,32 @@
     flex-direction: column;
 }
 
-.header {
-    height: 10vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+body {
+    background-color: #3D3D3D;
 }
 
+.header {
+    height: 80px;
+    width: calc(100vw - 40px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    display: flex;
+    background-color: rgba(40, 42, 42, 0.866);
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 13px;
+    padding: 0px 10px;
+    backdrop-filter: blur(40px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #A462E5;
+}
 .createProject {
     color: rgb(187, 183, 183);
     height: 60px;
@@ -27,20 +45,38 @@
 .search {
     color: rgba(191, 189, 189, 0.808);
     font-size: 26px;
-    height: 70px;
+    height: 55px;
     width: 500px;
     display: flex;
     align-items: center;
     background-color: #606060;
     border-radius: 13px;
-    margin-right: 100px;
     padding-left: 10px;
+    border: none;
+    outline: none;
 }
 
 .content {
-    background-color: #3D3D3D;
     height: 90vh;
     width: 100vw;
+}
+
+.context {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+  background-color: #a362e533;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(164, 98, 229, 0.5);
+  border-radius: 26px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(164, 98, 229, 0.3);
 }
 
 .cardsContainer {
@@ -51,13 +87,14 @@
 }
 
 .card{
-    background-color: #606060;
+    background-color: rgba(96, 96, 96, 0.8);
     width: 200px;
     height: 150px;
     border-radius: 13px;
-    display: inline;
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
     box-sizing: border-box;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
