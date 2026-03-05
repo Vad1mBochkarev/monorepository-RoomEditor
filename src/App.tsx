@@ -2,21 +2,27 @@ import { memo } from 'react'
 import './App.css'
 
 import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import {Camera_and_scene} from './pages/editor page/edit_psge'
+// import { EffectComposer, Outline } from '@react-three/postprocessing'
+import{Style_html} from './pages/editor page/page_layout_3d_obj'
 
-
-export const MainPage = memo(() => {
+export const Model_render = memo(() => {
   return (
-    <div style={{height: "100vh", width: "100vw", }}>
+    <div style={{height: "100vh", width: "100vw"}}>
       {/* <nav style={{height: "100%", width: "300px", borderRadius: 13, background: "black"}}>
       </nav> */}
-      <div id="canvas-container">
-        <Canvas>
-          <mesh>
-          <ambientLight intensity={0.1} />
-          <directionalLight color="red" position={[0, 0, 5]} />
-          <boxGeometry args={[2, 2, 2]}/>
-          <meshStandardMaterial />
-          </mesh>
+         <Style_html/>
+      <div id="canvas-container" style={{overflow:'hidden',width:'100%', height:'100%', zIndex:'0', backgroundColor: 'rgba(89, 89, 89, 1)'}}>
+          <Canvas>
+            <ambientLight intensity={0.5} />
+            <directionalLight color="red" position={[0, 0, 5]} />
+            <Camera_and_scene/>
+            <OrbitControls/>
+            <mesh>
+            <boxGeometry args={[2, 2, 2]} />
+            <meshStandardMaterial />
+            </mesh>
         </Canvas>
       </div>
     </div>
@@ -27,7 +33,7 @@ function App() {
   console.log('it renders')
   return (
     <>
-      <MainPage/>
+      <Model_render/>
     </>
   )
 }

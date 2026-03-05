@@ -3,6 +3,7 @@
   margin: 0px;
   padding: 0px;
   text-align: center;
+  overflow:hidden;
 }
 
 .logo {
@@ -49,3 +50,4 @@
   padding: 0;
   background-color: #3D3D3D;
 }
+
