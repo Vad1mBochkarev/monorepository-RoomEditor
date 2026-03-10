@@ -44,9 +44,9 @@ export function Camera_and_scene() {
   return (
     <>
     {/* сдесь мы отрисовываем сеточную сцену в центре нашего canvas, с размерами 10 на 10 */}
-    <gridHelper args={[20,40]}/> 
+    <gridHelper args={[20,40]} position={[0, -1, 0]}/> 
     {/* ниже мы задаем цвет тени объекту на сцене */}
-    <ambientLight intensity={0.4} color={0xffffff}/>
+    <ambientLight intensity={0.4} color={0xff}/>
     </>
   ); 
 }

@@ -1,14 +1,18 @@
+import './page_layout.css'
+
+
 export function Style_html(){
     return(
         <>
-        <div>Layout_paje_css</div>
         <div className="conteiner_style">
-            <div className="dash_bord_rigth" style={{backgroundColor: "rgba(81, 80, 81)", width:'20%', height:'100%',position:'absolute', fontSize:'30px', color:"black", padding:'10px', zIndex:'2'}}>
-                <button style={{backgroundColor:'rgba(164, 98, 229, 1)', width:'50%', height:'10%', margin:'40px', alignItems:'center', display:'flex', padding:'20px'}}><>Bottom</></button>
-                <>Text</>
-                <> X</>
-                <> y</>
-                <> z</>
+            <div className="dash_bord_rigth">
+                <button className="button"><>Bottom</></button>
+                            <h1 className='osi'>axis_x</h1>
+                        <input className='axis_x'></input>
+                            <h1 className='osi'>axis_y</h1>
+                        <input className='axis_y'></input>
+                            <h1 className='osi'>axis_z</h1>
+                        <input className='axis_z'></input>
             </div>
         </div>
         </>
