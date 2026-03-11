@@ -32,6 +32,66 @@ export const projectsStore = create<ProjectsStoreInterface>((set, get) => ({
             id: "3",
             name: "Kitchen",
             description: "Contemporary kitchen renovation"
+        },
+        {
+            id: "4",
+            name: "Bathroom",
+            description: "Spa-like bathroom retreat"
+        },
+        {
+            id: "5",
+            name: "Home Office",
+            description: "Productive work environment"
+        },
+        {
+            id: "6",
+            name: "Dining Room",
+            description: "Elegant dining space"
+        },
+        {
+            id: "7",
+            name: "Garage",
+            description: "Organized storage and workshop"
+        },
+        {
+            id: "8",
+            name: "Nursery",
+            description: "Comfortable baby room"
+        },
+        {
+            id: "9",
+            name: "Home Gym",
+            description: "Fitness training space"
+        },
+        {
+            id: "10",
+            name: "Game Room",
+            description: "Entertainment and leisure area"
+        },
+        {
+            id: "11",
+            name: "Library",
+            description: "Quiet reading space"
+        },
+        {
+            id: "12",
+            name: "Laundry Room",
+            description: "Efficient laundry facility"
+        },
+        {
+            id: "13",
+            name: "Walk-in Closet",
+            description: "Spacious clothing storage"
+        },
+        {
+            id: "14",
+            name: "Home Theater",
+            description: "Cinema-style viewing room"
+        },
+        {
+            id: "15",
+            name: "Garden Room",
+            description: "Indoor plant sanctuary"
         }
     ],
 
