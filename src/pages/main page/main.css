@@ -9,6 +9,14 @@ body {
     background-color: #3D3D3D;
 }
 
+.feel {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .header {
     height: 80px;
     width: calc(100vw - 40px);
@@ -57,8 +65,8 @@ body {
 }
 
 .content {
-    height: 90vh;
-    width: 100vw;
+    height: 100vh;
+    width: calc(100vw - 100px);
 }
 
 .context {
@@ -119,12 +127,12 @@ body {
 .cardsContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 25px;
   padding: 20px;
 }
 
 .card{
-    background-color: rgba(96, 96, 96, 0.8);
+    background-color: rgba(96, 96, 96, 0.595);
     width: 200px;
     height: 150px;
     border-radius: 13px;
@@ -136,4 +144,74 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+}
+
+.card.activeCard {
+    width: 300px;
+    height: 300px;
+    z-index: 10;
+    top: -50%;
+    left: -25%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 150px;
+    margin-top: 10px;
+}
+
+.card-actions button {
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.card-actions button:hover {
+    background-color: #333;
+}
+
+.card-actions .delete:active {
+    background-color: #ff4d4d;
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.close-icon {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.4); 
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s, transform 0.2s;
+    user-select: none;
+}
+
+.activeCard:hover .close-icon {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.close-icon:hover {
+    transform: scale(1.2);
+    color: #fff;
 }
