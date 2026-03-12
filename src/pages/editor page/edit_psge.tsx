@@ -32,6 +32,7 @@ import './edit.css'
 import { useThree } from '@react-three/fiber'
 import { useEffect } from 'react'
 // import * as THREE from 'three'
+import { Grid } from '@react-three/drei';
 
 export function Camera_and_scene() {
   const { camera } = useThree(); // Получаем камеру из контекста Canvas
@@ -44,9 +45,21 @@ export function Camera_and_scene() {
   return (
     <>
     {/* сдесь мы отрисовываем сеточную сцену в центре нашего canvas, с размерами 10 на 10 */}
-    <gridHelper args={[20,40]} position={[0, -1, 0]}/> 
+      <Grid
+      args={[100, 100]}
+      
+        infiniteGrid = {true}
+        fadeDistance = {50}
+        fadeStrength={5}  // Сила затухания
+        cellSize={1}      // Размер мелкой клетки
+        sectionSize={5}   // Размер крупных секций
+        sectionColor="#ff0000"
+        cellColor="#ffffff"
+        position={[0, -1.01, 0]}
+      />
     {/* ниже мы задаем цвет тени объекту на сцене */}
-    <ambientLight intensity={0.4} color={0xff}/>
+    <ambientLight intensity={0.7} />
+    <pointLight position={[10, 10, 10]} intensity={2}/>
     </>
   ); 
 }
