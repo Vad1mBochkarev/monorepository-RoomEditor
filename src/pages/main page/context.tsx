@@ -6,6 +6,7 @@ export const MenuContext = createContext<boolean>(false);
 function Context() {
   const isMenuOpen = useContext(MenuContext);
 
+
   const [projectName, setProjectName] = useState<string>("");
   const [projectDescription, setProjectDescription] = useState<string>("");
 
@@ -17,7 +18,6 @@ function Context() {
     projectsStore.getState().add({ name: projectName, description: projectDescription });
     setProjectName("");
     setProjectDescription("");
-
   };
 
   if (!isMenuOpen) return null;
@@ -43,8 +43,5 @@ function Context() {
     </div>
   );
 }
-
-
-
 
 export default Context;
