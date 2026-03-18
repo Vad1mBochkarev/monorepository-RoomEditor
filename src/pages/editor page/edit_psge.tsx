@@ -50,7 +50,7 @@ export function Camera_and_scene() {
       
         infiniteGrid = {true}
         fadeDistance = {50}
-        fadeStrength={5}  // Сила затухания
+        fadeStrength={2}  // Сила затухания
         cellSize={1}      // Размер мелкой клетки
         sectionSize={5}   // Размер крупных секций
         sectionColor="#ff0000"

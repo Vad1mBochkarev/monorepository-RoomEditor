@@ -19,7 +19,7 @@ export interface ProjectsStoreInterface {
 export const projectsStore = create<ProjectsStoreInterface>((set, get) => ({
     projects: [
         {
-            id: "1",
+            id: v4(),
             name: "Living Room",
             description: "Modern living room design"
         },
