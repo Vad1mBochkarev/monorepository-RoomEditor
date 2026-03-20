@@ -13,6 +13,7 @@ interface PositionState{
     y: number | string;
     z: number | string;
 }
+
 export default function Position_model (){
     const { objects, selectedObjId, setSel } = useObjectStore(useShallow((state) => ({
         objects: state.objects,
@@ -46,16 +47,16 @@ return(
         <Canvas dpr={[1, 2]} gl={{antialias: true}}>
         <Camera_and_scene/>
         {objects.map((obj) =>(
-            <mesh key={obj.id} position={obj.position} onClick={(e) => {e.stopPropagation(); setSel(obj.id)}}
- >
+            <mesh key={obj.id} position={obj.position} onClick={(e) => {e.stopPropagation(); const willBeActive = selectedObjId !== obj.id; const nextId = willBeActive  ? obj.id : null;
+             setSel(nextId) ;console.log('is object2 target', willBeActive)}}>
                 <boxGeometry args ={[1,1,1]}/>
-                <meshStandardMaterial color={selectedObjId == obj.id? "red" : "royalblue"}/>
+                <meshStandardMaterial color={selectedObjId == obj.id? "red" : "royalblue" }/>
                 
             </mesh>
     ))}
      
         <mesh
-            onClick={() => {setActive(!isActive); console.log("is object active", isActive)}}
+            onClick={() => {const nextObjactiv = !isActive;setActive(nextObjactiv); console.log("is object active", nextObjactiv)}}
             position={[Number(position.x), Number(position.y), Number(position.z)]}>
                 <boxGeometry args={[2, 2, 2]}/>
                 <meshStandardMaterial color={isActive? "red" : "royalblue"}/>

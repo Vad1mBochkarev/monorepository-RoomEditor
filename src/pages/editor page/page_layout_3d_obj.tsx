@@ -33,7 +33,10 @@ export function Style_html({position, updatePos}: StyleHtmlProps){
              <div className="dash_bord_rigth">
                 <h2>Object Name</h2>
                 <button className="button" onClick={objCreateLol} >Create object</button>
+                <h2>list object</h2>
+                <div style={{width:'50%', height:'50%'}}>
 
+                </div>
              </div>
                 <div className="dash_bord_left">
                     <h1 className='osi' >axis_x</h1>
