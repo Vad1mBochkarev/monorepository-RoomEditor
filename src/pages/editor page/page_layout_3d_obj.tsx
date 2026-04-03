@@ -1,11 +1,25 @@
 import './page_layout.css'
-import { useObjectStore, type ObjectType } from '../../stores/store_3d_object';
+import { useObjectStore} from '../../stores/store_3d_object';
 import { useShallow } from 'zustand/shallow';
 
 interface StyleHtmlProps{
     position:{x: number | string; y: number | string; z: number | string};
     updatePos: (axsis:'x' | 'y' | 'z', value:string) => void;
+    disabled?: boolean;
 
+}
+
+export const List_obj = () =>{
+const odd = useObjectStore((state) => state.objects);
+const sell = useObjectStore((state) => state.setSel)
+const selectedId = useObjectStore((state) => state.selectedObjId)
+return(
+    <>
+   {odd.map((obj, index) => (<div key={obj.id} onClick={() =>sell(obj.id)} style={{width:'100px', height:'20px',cursor: 'pointer', background: selectedId === obj.id ? '#A462E5' : '#444'}}>
+    Cube {index + 1}
+   </div>))}
+    </>
+)
 }
 
 
@@ -19,24 +33,26 @@ export function Style_html({position, updatePos}: StyleHtmlProps){
 
 
     const objCreateLol = () => {
-        const newObj: ObjectType = {
-            id: '',
+         addObject({
             position: [0, 0, 0],
             color: '#3498db',
             projectId: '1'
-        }
-        addObject(newObj)
+        })
+        // addObject()
     }
     return(
         <>
         <div className="famili_conteiner">
              <div className="dash_bord_rigth">
                 <h2>Object Name</h2>
-                <button className="button" onClick={objCreateLol} >Create object</button>
-                <h2>list object</h2>
-                <div style={{width:'50%', height:'50%'}}>
-
+                <div style={{width:'100%', height:'7%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                <button className="button" onClick={objCreateLol} > <h1 style={{fontSize:'15px', margin:'0'}}>Create object</h1></button>
+                <button className="button" onClick={objCreateLol} style={{right:'0'}} ><h1 style={{fontSize:'15px', margin:'0'}}>Import Modell</h1></button>
                 </div>
+
+                <h2>list object</h2>
+                <div style={{}}></div>
+                <List_obj/>
              </div>
                 <div className="dash_bord_left">
                     <h1 className='osi' >axis_x</h1>

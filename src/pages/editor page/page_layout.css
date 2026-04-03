@@ -1,11 +1,12 @@
 .button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
     background-color:#A462E5;
     width: 100px;
     height: 50px;
     border: none;
+    margin: 10px;
     
 }
 

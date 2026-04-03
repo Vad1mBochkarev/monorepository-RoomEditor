@@ -1,13 +1,42 @@
+// import { memo } from 'react'
+// import './App.css'
+// import Position_model from './pages/editor page/edit_position_object'
+// // import { Canvas } from '@react-three/fiber'
+// // import { OrbitControls } from '@react-three/drei'
+// // import {Camera_and_scene} from './pages/editor page/edit_psge'
+// // import { EffectComposer, Outline } from '@react-three/postprocessing'
+// // import{Style_html} from './pages/editor page/page_layout_3d_obj'
+// import Main from './pages/main page/main'
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+// import { Loader } from '@react-three/drei'
+// import Loader_o from './pages/editor page/Model_rendering'
+
+// export const Model_render = memo(() => {
+//   return (
+//     <Position_model/>
+//   )
+// })
+
+// function App() {
+//   console.log('it renders')
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route path="/" element={<Main />} />
+//         <Route path="/editor" element={<Model_render />} />
+//       </Routes>
+      
+//     </Router>
+//   )
+// }
+//   export default App
+
 import { memo } from 'react'
 import './App.css'
 import Position_model from './pages/editor page/edit_position_object'
-// import { Canvas } from '@react-three/fiber'
-// import { OrbitControls } from '@react-three/drei'
-// import {Camera_and_scene} from './pages/editor page/edit_psge'
-// import { EffectComposer, Outline } from '@react-three/postprocessing'
-// import{Style_html} from './pages/editor page/page_layout_3d_obj'
 import Main from './pages/main page/main'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Loader } from '@react-three/drei' // Оставляем для индикации загрузки
 
 export const Model_render = memo(() => {
   return (
@@ -18,13 +47,21 @@ export const Model_render = memo(() => {
 function App() {
   console.log('it renders')
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        
-        <Route path="/editor" element={<Model_render />} />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/editor" element={<Model_render />} />
+        </Routes>
+      </Router>
+
+      {/* Индикатор загрузки 3D моделей (показывается автоматически) */}
+      {/* <Loader 
+        containerStyles={{ background: '#3D3D3D' }} 
+        innerStyles={{ background: '#fff' }} 
+      /> */}
+    </>
   )
 }
-  export default App
+
+export default App
