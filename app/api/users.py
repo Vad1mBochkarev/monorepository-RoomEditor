@@ -18,32 +18,35 @@ def login_user(data: UserBase, db: Session = Depends(get_db)) -> UserResponse:
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Неверный логин или пароль"
         )
-
+    
     #  Возвращаем объект пользователя (Pydantic схема UserResponse отфильтрует лишнее, например, пароль)
-    return user
+    return UserResponse(id=user.id, login=user.login)
 
 
-# регисрация нового пользователя
+# регистрация нового пользователя (исправлена опечатка в слове регистрация)
 @router.post("/auth/register")
 def register_user(data: UserCreate, db: Session = Depends(get_db)) -> UserResponse:
-
-    # проверка есть ли пользователь с таким логином
+    # Выполняем запрос к БД: проверяем, есть ли пользователь с таким логином
     existing_user = db.query(User).filter(User.login == data.login).first()
+    # Если пользователь уже существует — выбрасываем 400 ошибку
     if existing_user:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Пользователь с таким логином уже существует"
         )
     
-    # создание пользователя
+    # Создаем нового пользователя с данными из запроса
     new_user = User(login=data.login, password=data.password)
 
+    # Добавляем пользователя в БД
     db.add(new_user)
+    # Сохраняем изменения
     db.commit()
+    # Обновляем объект новыми данными из БД
     db.refresh(new_user)
 
-    return new_user
-
+    # Возвращаем созданного пользователя (Pydantic схема UserResponse)
+    return UserResponse(id=new_user.id, login=new_user.login)
 
 
 # # получить данные текущего пользователя

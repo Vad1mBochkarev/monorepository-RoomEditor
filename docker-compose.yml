@@ -14,8 +14,8 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 8081:8080
 
 # https://dockerhosting.ru/blog/postgresql-v-docker/
 
-# http://127.0.0.1:8080
+# http://127.0.0.1:8081

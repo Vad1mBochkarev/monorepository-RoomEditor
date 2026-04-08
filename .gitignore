@@ -129,12 +129,15 @@ dmypy.json
 
 # Environment variables
 .env
+.env.local
+.env.production
 
 # PostgreSQL data directory
 pgdata/
 
 # Docker
 .dockerignore
+docker-compose.override.yml
 
 # Logs
 logs/
@@ -143,3 +146,49 @@ logs/
 # Temporary files
 tmp/
 temp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Coverage reports
+coverage/
+htmlcov/
+
+# Test reports
+test-reports/
+.junit/
+.nyc_output/
+
+# Package manager
+node_modules/
+yarn-error.log
+yarn.lock
+package-lock.json
+
+# Local development files
+.local
+.dev
+.debug
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
