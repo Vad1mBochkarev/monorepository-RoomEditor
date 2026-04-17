@@ -19,7 +19,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Room Editor API")
 
 
-# Заполнение базы данных примерами при запуске приложения
+# Заполнение базы данных примерами при запуске приложения.
 @app.on_event("startup")
 async def seed_data_on_startup():
     db = next(get_db())
