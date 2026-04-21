@@ -1,7 +1,7 @@
 from typing import Optional
 from datetime import datetime
 from uuid import UUID, uuid4
-from sqlalchemy import ForeignKey, String, DateTime, UUID, Uuid
+from sqlalchemy import ForeignKey, String, DateTime, UUID, Uuid, LargeBinary
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from sqlalchemy import func
 
@@ -39,6 +39,7 @@ class ProjectItem(Base):
     x: Mapped[float] = mapped_column()
     y: Mapped[float] = mapped_column()
     z: Mapped[float] = mapped_column()
+    scale: Mapped[float] = mapped_column()
     rotation: Mapped[float] = mapped_column()
     
     project_id: Mapped[UUID] = mapped_column(ForeignKey("projects.id"))
@@ -52,8 +53,10 @@ class Furniture(Base):
 
     id: Mapped[UUID] = mapped_column(Uuid, primary_key=True, default=uuid4)
     name: Mapped[str] = mapped_column(String())
+    description: Mapped[Optional[str]] = mapped_column(String)
     file_size: Mapped[int] = mapped_column()
     file_url: Mapped[str] = mapped_column(String)
+    preview: Mapped[Optional[bytes]] = mapped_column(LargeBinary, nullable=True)
 
     category_id: Mapped[UUID] = mapped_column(ForeignKey("furniture_categories.id"))
     category: Mapped["FurnitureCategories"] = relationship(back_populates="furniture")

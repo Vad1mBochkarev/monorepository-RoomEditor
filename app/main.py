@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
@@ -14,16 +15,18 @@ from app.api.furniture import router as furniture_router
 from app.api.projects import router as projects_router
 from seed_data import seed_database
 
-Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Room Editor API")
-
-
-# Заполнение базы данных примерами при запуске приложения
-@app.on_event("startup")
-async def seed_data_on_startup():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup: создание таблиц и заполнение данными
+    Base.metadata.create_all(bind=engine)
     db = next(get_db())
     seed_database(db)
+    yield
+    # Shutdown: здесь можно добавить cleanup код при необходимости
+
+
+app = FastAPI(title="Room Editor API", lifespan=lifespan)
 
 
 app.add_middleware(

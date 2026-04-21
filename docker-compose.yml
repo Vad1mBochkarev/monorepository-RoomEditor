@@ -4,7 +4,7 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: StrongPassword01
-      POSTGRES_DB: RoomEditor         # <--- Создаст нужную базу
+      POSTGRES_DB: RoomEditor
     ports:
       - "5434:5432"
     volumes:
@@ -14,8 +14,30 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8081:8080
+      - "8081:8080"
 
 # https://dockerhosting.ru/blog/postgresql-v-docker/
 
 # http://127.0.0.1:8081
+
+  minio:
+    image: quay.io/minio/minio:latest
+    container_name: minio_storage
+    # Запускаем сервер, указываем директорию для данных и порт для веб-консоли
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000" # Порт для S3 API (сюда будет обращаться ваш код)
+      - "9001:9001" # Порт для веб-интерфейса (MinIO Console)
+    environment:
+      MINIO_ROOT_USER: admin                 # Access Key (логин)
+      MINIO_ROOT_PASSWORD: supersecretpassword # Secret Key (пароль - минимум 8 символов)
+    volumes:
+      - minio_data:/data # Подключаем volume, чтобы файлы не пропадали при перезапуске
+    restart: unless-stopped
+
+volumes:
+  minio_data: # Объявляем volume для персистентного хранения данных
+
+
+
+#! сохранение моделей поднять для этого minio
