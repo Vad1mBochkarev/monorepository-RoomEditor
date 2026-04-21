@@ -16,10 +16,19 @@ from app.api.projects import router as projects_router
 from seed_data import seed_database
 
 
+<<<<<<< HEAD
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup: создание таблиц и заполнение данными
     Base.metadata.create_all(bind=engine)
+=======
+app = FastAPI(title="Room Editor API")
+
+
+# Заполнение базы данных примерами при запуске приложения.
+@app.on_event("startup")
+async def seed_data_on_startup():
+>>>>>>> bbfb24bff09651e66f4e29afedce9037a18cbac2
     db = next(get_db())
     seed_database(db)
     yield
