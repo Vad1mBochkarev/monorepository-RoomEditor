@@ -5,7 +5,8 @@ export type ObjectType = {
     id: string,
     position: [number, number, number], // x, y, z
     color: string,
-    projectId: string
+    projectId: string,
+    modelPath: string
 
 }
 
@@ -21,26 +22,23 @@ interface ObjectStore{
 
 
 
-export const useObjectStore = create <ObjectStore>((set, get) => ({
+export const useObjectStore = create <ObjectStore>((set) => ({
     objects:[],
     selectedObjId: null,
     
     addObject: (newObjDate) => set((state) =>
         ({...state, objects: [...state.objects, {...newObjDate, id: uuidv4() }]})),
+    
     setSel: (id) => set({selectedObjId: id}),
+    
     removeObject: (id) =>set((state) => ({
         objects: state.objects.filter((object) => object.id !== id),
         selectedObjId: state.selectedObjId === id ? null : state.selectedObjId
     })),
+
+
+    //! Стор для хранения текущей позиции объекта
     updatePosition:(id, axis, value) => set((state) => {
-
-
-        // if(value){
-        //     const movedObj = state.objects.find(e => e.id === id)
-        //     if (movedObj === undefined) {
-        //         console.warn('cannot find movable obj in updatePosition. Id is: ', id)
-        //         return
-        //     }
             const axis_to_coords_mapping = {
                 x: 0,
                 y: 1,
@@ -60,15 +58,10 @@ export const useObjectStore = create <ObjectStore>((set, get) => ({
                     return obj
                 })
             }
-        //     const currentAxisCoordValue = movedObj.position[currentAxisCoordIndex]
-        //     if(currentAxisCoordValue !== value){
-        //          const newObjPosition = [...movedObj.position]
-        //          newObjPosition[currentAxisCoordIndex] = value
-        //          return {objects:[...state.objects.filter(el => el.id !== id), {...movedObj, position: newObjPosition}]}
-        //     }            
-        // }
-        // return state
+
     })
+
+
 
 }))
 //todo v4 uuidv4 - это генерация рандомного id

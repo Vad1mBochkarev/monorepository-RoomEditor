@@ -1,18 +1,11 @@
-// import { useGLTF } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 
-// export default function Model_rendering() {
-//   // Хук useGLTF сам создаст лоадер, загрузит файл и обработает ошибки.
-//   // Путь '/models/Boombox/Boombox.gltf' будет искаться в папке public (или static, если настроено)
-//   const { scene } = useGLTF('/static/models/Boombox/BoomBox.gltf')
-
-//   return (
-//     <primitive 
-//       object={scene} 
-//       scale={1} 
-//       position={[0, 0, 0]} 
-//     />
-//   )
-// }
-
-// // Предзагрузка модели, чтобы она не "мигала" при переходе на страницу
-// useGLTF.preload('static/models/Boombox/BoomBox.gltf')
+//* Функция для того чтобы пропсы дошли до модели такие как position scale rotation
+export function Scene({ path, ...props }: { path: string, [key: string]: any }) {
+    const gltf = useGLTF(path)
+    return (
+        <group {...props} dispose={null}>
+            <primitive object={gltf.scene.clone()} />
+        </group>
+    )
+}
