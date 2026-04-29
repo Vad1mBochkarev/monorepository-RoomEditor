@@ -84,17 +84,17 @@ graph TB
 
 ```bash
 # Backend
-cd roomEditorBackend
+cd backend
 docker compose up -d
 uvicorn app.main:app --reload
 
 # Frontend
-cd roomEditorFrontend
+cd frontend
 npm install
 npm run dev
 ```
 
 ## Подробнее о компонентах
 
-- **Backend** — REST API на FastAPI, работа с PostgreSQL и MinIO. Подробнее: [`roomEditorBackend/README.md`](roomEditorBackend/README.md)
-- **Frontend** — React + Three Fiber для 3D-визуализации интерьеров. Подробнее: [`roomEditorFrontend/README.md`](roomEditorFrontend/README.md)
+- **Backend** — REST API на FastAPI, работа с PostgreSQL и MinIO. Подробнее: [`backend/README.md`](backend/README.md)
+- **Frontend** — React + Three Fiber для 3D-визуализации интерьеров. Подробнее: [`frontend/README.md`](frontend/README.md)
